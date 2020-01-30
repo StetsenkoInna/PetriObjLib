@@ -228,7 +228,7 @@ public class PetriP extends PetriMainElement implements Cloneable, Serializable 
     }
 
     public void printParameters() {
-        System.out.println("Place " + name + "has such parametrs: \n"
+        System.out.println("Place '" + name + "' has such parametrs: \n"
                 + " number " + number + ", mark " + mark);
     }
 
