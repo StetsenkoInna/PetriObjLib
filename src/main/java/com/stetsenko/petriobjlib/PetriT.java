@@ -497,7 +497,7 @@ public class PetriT extends PetriMainElement implements Cloneable, Serializable 
             }
         }
         if (inP.isEmpty()) {
-            throw new ExceptionInvalidTimeDelay("Transition " + this.getName() + " hasn't input positions!");
+            throw new ExceptionInvalidTimeDelay("Transition " + this.getName() + " hasn't input places!");
         }
 
     }
@@ -522,7 +522,7 @@ public class PetriT extends PetriMainElement implements Cloneable, Serializable 
             }
         }
         if (getOutP().isEmpty()) {
-            throw new ExceptionInvalidTimeDelay("Transition " + this.getName() + " hasn't output positions!");
+            throw new ExceptionInvalidTimeDelay("Transition " + this.getName() + " hasn't output places!");
         }
     }
 

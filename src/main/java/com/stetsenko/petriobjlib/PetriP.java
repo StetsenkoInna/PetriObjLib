@@ -74,8 +74,8 @@ public class PetriP extends PetriMainElement implements Cloneable, Serializable 
         
     }
 
-    public PetriP(PetriP position) {
-        this(position.getName(), position.getMark());
+    public PetriP(PetriP place) {
+        this(place.getName(), place.getMark());
         number = next;
         next++;
     }

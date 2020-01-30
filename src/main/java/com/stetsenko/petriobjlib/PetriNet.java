@@ -275,8 +275,8 @@ public class PetriNet implements Cloneable, Serializable {
      */
     public void printMark() {
         System.out.print("Mark in Net  " + this.getName() + "   ");
-        for (PetriP position: ListP) {
-            System.out.print(position.getMark() + "  ");
+        for (PetriP place: ListP) {
+            System.out.print(place.getMark() + "  ");
         }
         System.out.println();
     }

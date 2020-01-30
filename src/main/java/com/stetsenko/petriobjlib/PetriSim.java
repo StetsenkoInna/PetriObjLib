@@ -36,7 +36,7 @@ public class PetriSim implements Cloneable, Serializable {
     private ArcOut[] listOut = new ArcOut[numOut];
     protected PetriT eventMin; // modefier is edited on protected for the subclass access
     private PetriNet net;
-    private ArrayList<PetriP> listPositionsForStatistica = new ArrayList<PetriP>();
+    private ArrayList<PetriP> listPlacesForStatistica = new ArrayList<PetriP>();
     //..... з таким списком статистика спільних позицій працює правильно...
     
      private String id; //unique number of object for server
@@ -75,7 +75,7 @@ public class PetriSim implements Cloneable, Serializable {
         numOut = listOut.length;
         eventMin = this.getEventMin();
         priority = 0;
-        listPositionsForStatistica.addAll(Arrays.asList(listP));
+        listPlacesForStatistica.addAll(Arrays.asList(listP));
         
         id = null; // server set id
 
@@ -125,8 +125,8 @@ public class PetriSim implements Cloneable, Serializable {
      *
      * @return list of places for statistics which use for statistics
      */
-    public ArrayList<PetriP> getListPositionsForStatistica() {
-        return listPositionsForStatistica;
+    public ArrayList<PetriP> getListPlacessForStatistica() {
+        return listPlacesForStatistica;
     }
 
     /**
@@ -318,8 +318,8 @@ public class PetriSim implements Cloneable, Serializable {
 
             this.eventMin();//знайти найближчу подію та ії час
             
-            for (PetriP position : listP) {
-                position.changeMean((timeMin - this.getCurrentTime()) / getSimulationTime());
+            for (PetriP place : listP) {
+                place.changeMean((timeMin - this.getCurrentTime()) / getSimulationTime());
             }
 
             for (PetriT transition : listT) {
@@ -459,8 +459,8 @@ public class PetriSim implements Cloneable, Serializable {
      * active channels of transitions
      */
     public void doStatistics() {
-        for (PetriP position : listP) {
-            position.changeMean((timeMin - this.getCurrentTime()) / getSimulationTime());
+        for (PetriP place : listP) {
+            place.changeMean((timeMin - this.getCurrentTime()) / getSimulationTime());
         }
         for (PetriT transition : listT) {
             transition.changeMean((timeMin - this.getCurrentTime()) / getSimulationTime());
@@ -473,8 +473,8 @@ public class PetriSim implements Cloneable, Serializable {
      */
     public void doStatistics(double dt) {
         if (dt > 0) {
-            for (PetriP position : listPositionsForStatistica) {
-                position.changeMean(dt);
+            for (PetriP place : listPlacesForStatistica) {
+                place.changeMean(dt);
             }
         }
         if (dt > 0) {
@@ -535,8 +535,8 @@ public class PetriSim implements Cloneable, Serializable {
      */
     public void printMark() {
         System.out.print("Mark in Net  " + this.getName() + "   ");
-        for (PetriP position : listP) {
-            System.out.print(position.getMark() + "  ");
+        for (PetriP place : listP) {
+            System.out.print(place.getMark() + "  ");
         }
         System.out.println();
     }
@@ -551,8 +551,8 @@ public class PetriSim implements Cloneable, Serializable {
         
     public void printMark(JTextArea area) {
         area.append("\n Mark in Net  " + this.getName() + "   \n");
-        for (PetriP position : listP) {
-            area.append(position.getMark() + "  ");
+        for (PetriP place : listP) {
+            area.append(place.getMark() + "  ");
         }
         area.append("\n");
     }
